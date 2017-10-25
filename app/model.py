@@ -10,16 +10,14 @@ class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password = db.Column(db.String(64), unique=True, index=True)
-    
+
     def __init__(self, username, password):
         self.username = username
         self.password = password
 
-    def get_id(self):
-        return unicode(self.id)
 
     def __repr__(self):
-        return '<User %r>' % self.name
+        return '<User %r>' % self.username
 
     def is_authenticated(self):
         return True

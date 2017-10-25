@@ -38,7 +38,7 @@ login_manger.init_app(app)
 
 @login_manger.user_loader
 def load_user(user_id):
-    from Model import Users
+    from model import Users
     return Users.query.get(int(user_id))
 
 """
