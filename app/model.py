@@ -8,11 +8,13 @@ from run import db
 class Users(UserMixin, db.Model):
     __tablename__ = 'user' # 对应 MySql 数据表
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True, index=True)
-    pwd = db.Column(db.String(64), unique=True, index=True)
-    def __init__(self, name, pwd):
-        self.name=name
-        self.pwd=pwd
+    username = db.Column(db.String(64), unique=True, index=True)
+    password = db.Column(db.String(64), unique=True, index=True)
+    
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
     def get_id(self):
         return unicode(self.id)
 

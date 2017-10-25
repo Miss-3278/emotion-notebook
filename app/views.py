@@ -22,8 +22,8 @@ def index():
 def login():
         form=Login_Form()
         if form.validate_on_submit():
-            user=Users.query.filter_by(name=form.name.data).first()
-            if user is not  None and user.pwd==form.pwd.data:
+            user=Users.query.filter_by(username=form.name.data).first()
+            if user is not  None and user.password==form.pwd.data:
                 login_user(user)
                 flash('登录成功')
                 return  render_template('hello.html', name=form.name.data)
@@ -44,7 +44,7 @@ def logout():
 def register():
     form=Register_Form()
     if form.validate_on_submit():
-        user=Users(name=form.name.data, pwd=form.pwd.data)
+        user=Users(username=form.name.data, password=form.pwd.data)
         db.session.add(user)
         db.session.commit()
         flash('注册成功')
