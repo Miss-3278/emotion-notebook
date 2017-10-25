@@ -15,6 +15,6 @@ class Login_Form(FlaskForm):
 
 #注册表单
 class Register_Form(FlaskForm):
-    name=StringField(u'用户名',validators=[Required()])
-    pwd=PasswordField(u'密码',validators=[Required()])
+    name=StringField(u'用户名', validators=[Required()])
+    pwd=PasswordField(u'密码', validators=[Required()])
     submit=SubmitField(u'注册')

@@ -12,6 +12,7 @@ from flask_sqlalchemy import SQLAlchemy
 # 解决 python3.x 不适用 mysqldb Model 的bug
 import pymysql
 pymysql.install_as_MySQLdb()
+
 import sys
 
 #解决flash的一个bug
