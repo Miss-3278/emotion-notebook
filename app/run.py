@@ -8,7 +8,9 @@ from flask_moment import Moment
 from flask_wtf import FlaskForm
 from flask_login import LoginManager,login_user,UserMixin,logout_user,login_required
 from flask_sqlalchemy import SQLAlchemy
-from flask_script import Manager
+
+import pymysql
+pymysql.install_as_MySQLdb()
 import sys
 #解决flash的一个bug
 defaultencoding = 'utf-8'
@@ -18,7 +20,6 @@ if sys.getdefaultencoding() != defaultencoding:
 
 
 app = Flask(__name__)
-manager = Manager(app)
 
 #各项插件的配置
 app.config['SECRET_KEY']='hard to guess string'
@@ -48,4 +49,4 @@ def init():
 
 if __name__ == '__main__':
     init()
-    manager.run()
+    app.run(port=6868, debug=True)

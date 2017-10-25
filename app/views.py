@@ -8,17 +8,15 @@ from model import  Users
 from flask_login import LoginManager, login_user, UserMixin, logout_user, login_required
 from run import db
 
+
 eNote=Blueprint('eNote', __name__, template_folder='templates')  #蓝图
 
 @eNote.route('/')
+@eNote.route('/index')
 def index():
     form=Login_Form()
     return render_template('login.html', form=form)
 
-@eNote.route('/index')
-def l_index():
-    form = Login_Form()
-    return render_template('login.html', form=form)
 
 @eNote.route('/login',methods=['GET','POST'])
 def login():
@@ -39,10 +37,10 @@ def login():
 def logout():
     logout_user()
     flash('你已退出登录')
-    return redirect(url_for('blog.index'))
+    return redirect(url_for('eNote.index'))
 
 
-@eNote.route('/register',methods=['GET','POST'])
+@eNote.route('/register', methods=['GET','POST'])
 def register():
     form=Register_Form()
     if form.validate_on_submit():
@@ -50,5 +48,5 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('注册成功')
-        return redirect(url_for('blog.index'))
+        return redirect(url_for('eNote.index'))
     return render_template('register.html', form=form)
