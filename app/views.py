@@ -7,6 +7,8 @@ from form import Login_Form, Register_Form
 from model import  Users
 from flask_login import LoginManager, login_user, UserMixin, logout_user, login_required
 from run import db
+import time
+date = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 
 eNote=Blueprint('eNote', __name__, template_folder='templates')  #蓝图
@@ -50,3 +52,8 @@ def register():
         flash('注册成功')
         return redirect(url_for('eNote.index'))
     return render_template('register.html', form=form)
+
+@eNote.route('/happy', methods = ["GET", "POST"])
+def happy():
+    return render_template("happy.html", date = date)
+
