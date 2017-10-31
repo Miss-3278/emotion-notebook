@@ -57,3 +57,7 @@ def register():
 def happy():
     return render_template("happy.html", date = date)
 
+@eNote.route('/start', methods = ['GET', 'POST'])
+def start():
+    return render_template('start.html', date = date)
+
